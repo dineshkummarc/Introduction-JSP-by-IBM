@@ -1,0 +1,29 @@
+<HTML>
+<HEAD>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<table border=0><tr><td>
+<img src="../images/bean/bean2.gif"></td>
+<td><font face="Arial" size=+1>Example of JSP Bean</font></td></tr></table>
+<table><tr><td>
+<pre><font face="Courier">
+&lt;HTML&gt;&lt;HEAD&gt; ...&lt;/HEAD&gt;
+&lt;bean name="UserInfo" varname=xtb type="TutorialXTBean" introspect="no" create="no" scope="session"&gt;
+&lt;/bean&gt;
+&lt;BODY&gt; 
+...
+If this were a real application, you would confirm your
+address below and provide billing information
+to finalize your transaction.
+&lt;p&gt;
+&lt;pre&gt;
+&lt;%= xtb.getFirstname() %&gt; &lt;%= xtb.getLastname() %&gt;
+&lt;%= xtb.getStreet() %&gt;
+&lt;%= xtb.getCity() %&gt;, &lt;%= xtb.getState() %&gt; &lt;%= xtb.getZip() %&gt;
+&lt;/pre&gt;
+...
+&lt;/BODY&gt;&lt;/HTML&gt;
+</font></pre>
+</td></tr></table>
+</BODY>
+</HTML>

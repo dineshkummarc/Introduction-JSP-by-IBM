@@ -1,0 +1,28 @@
+<html><head>
+<script language="Javascript">
+<!-- Hide from old browsers.
+function checkForm(click) {
+top.text.document.open("text/html")
+if (click == '1') {
+     top.text.document.writeln("<html><body bgcolor=\"#cccccc\"><font face=\"Arial\">")
+     top.text.document.writeln("<font color=#00693f>Correct! We're discussing that special JSP syntax in this topic!</font>")
+     top.text.document.writeln("</font></body></html>")
+}
+if (click == '2') {
+     top.text.document.writeln("<html><body bgcolor=\"#cccccc\"><font face=\"Arial\">")
+     top.text.document.writeln("<font color=#ff0000>No, the statement is true. JSPs mix HTML with special JSP syntax. </font>")
+     top.text.document.writeln("</font></body></html>")
+}
+top.text.document.close()
+}
+// Stop Hiding -->
+</script>
+<body bgcolor="ffffff" leftmargin=0 topmargin=0 marginwidth=0 marginheight=0>
+<form name="questionForm">
+<table border=0><tr><td><img src="../images/bean/bean7.gif" width="72" height="72" border=0 alt=""></td><td width="400"><font face="Arial" size=+1>Progress Quiz</font></td></tr><tr><td colspan=2><font face="Arial" size=-1>Let's take a break. Based on what we've discussed, is this True or False?<p>JSPs are a mixture of HTML code and special JSP syntax code.</font></tr></td></table>
+<table border=0>
+<tr><td valign="top"><a href="javascript:checkForm('1')"><img src="../images/questbut/q_a.jpg" width=36 height=19 border=0 alt="" vspace=2></a></td><td valign="top"><font face="Arial" size=-1>True</font></td></tr>
+<tr><td valign="top"><a href="javascript:checkForm('2')"><img src="../images/questbut/q_b.jpg" width=36 height=19 border=0 alt="" vspace=2></a></td><td valign="top"><font face="Arial" size=-1>False</font></td></tr>
+</table>
+
+</form></body></html>

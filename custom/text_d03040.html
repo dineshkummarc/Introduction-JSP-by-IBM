@@ -1,0 +1,13 @@
+<html><body bgcolor="#cccccc"><font face="Arial" size=-2>
+Let’s talk about some of the advantages of using JavaBeans with JSPs.<br>
+<br>
+When used with servlets and JSPs in an application server, JavaBeans represent the business logic for an application. They provide:<br>
+<br>
+* Properties which can be set to configure their behavior<br>
+* Methods exposing the services of the business logic<br>
+* Properties which encapsulate the generated dynamic content<br>
+<br>
+When a user sends a request by way of the browser, it may be for static or dynamic information. If dynamic, the request will be handled by a servlet.  The servlet locates one or more JavaBeans needed to perform the request.   It configures the beans using request parameters and invokes the required business logic methods. The servlet then stores a reference to the result bean so it is available to a JSP. The JSP uses the dynamic content available in the result bean to deliver a response back to the browser. <br>
+<br>
+You may wonder how this works. Click FORWARD and we’ll continue.<br>
+</font></body></html>

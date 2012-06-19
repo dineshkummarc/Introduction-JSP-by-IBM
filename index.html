@@ -1,0 +1,136 @@
+<html>
+<head>
+<title>Introduction to Java Server Pages</title>
+<script language="javascript">
+<!--
+
+browserName = navigator.appName;
+browserVer = parseInt(navigator.appVersion);
+
+if (browserName == "Netscape" && browserVer >= 3) {
+        version = "n3";
+}else{
+        version = "n2";
+}
+
+if (browserName == "Microsoft Internet Explorer" && browserVer >= 4) {
+        version = "n3";
+}
+
+if(version == "n3") {
+	bean0 = new Image();
+	bean0.src = "images/beananim/bean0.gif";
+	menu0off = new Image();
+	menu0off.src = "slide_images/menu/topbta00_n.gif";
+	menu0hi = new Image();
+	menu0hi.src = "slide_images/menu/topbta00_h.gif";
+	bean1 = new Image();
+	bean1.src = "images/beananim/bean1.gif";	
+	menu1off = new Image();
+	menu1off.src = "slide_images/menu/topbta01_n.gif";
+	menu1hi = new Image();
+	menu1hi.src = "slide_images/menu/topbta01_h.gif";
+	bean2 = new Image();
+	bean2.src = "images/beananim/bean2.gif";
+	menu2off = new Image();
+	menu2off.src = "slide_images/menu/topbta02_n.gif";
+	menu2hi = new Image();
+	menu2hi.src = "slide_images/menu/topbta02_h.gif";
+	bean3 = new Image();
+	bean3.src = "images/beananim/bean3.gif";
+	menu3off = new Image();
+	menu3off.src = "slide_images/menu/topbta03_n.gif";	
+	menu3hi = new Image();
+	menu3hi.src = "slide_images/menu/topbta03_h.gif";
+	bean4 = new Image();
+	bean4.src = "images/beananim/bean4.gif";     
+	menu4off = new Image();
+	menu4off.src = "slide_images/menu/topbta04_n.gif";
+	menu4hi = new Image();
+	menu4hi.src = "slide_images/menu/topbta04_h.gif";
+	bean5 = new Image();
+	bean5.src = "images/beananim/bean5.gif";
+	menu5off = new Image();
+	menu5off.src = "slide_images/menu/topbta05_n.gif";	
+	menu5hi = new Image();
+	menu5hi.src = "slide_images/menu/topbta05_h.gif";
+}
+
+
+function highlight(imgName) {
+        if(version=="n3") {
+        		 build = "menu" + imgName     
+                imgHi = eval("menu" + imgName + "hi.src");
+                document [build].src = imgHi;
+                build = "bean" + imgName    
+                imgHi = eval("bean" + imgName + ".src");
+                document.bean.src = imgHi; 
+        }
+}     
+       
+function unhighlight(imgName) {
+        if(version=="n3") {
+        		build = "menu" + imgName 
+                imgOff = eval("menu" + imgName + "off.src");
+                document [build].src = imgOff;   
+        }
+} 
+
+// -->
+</script>
+
+</head>
+<body bgcolor="#ffffff" leftmargin=0 topmargin=0 marginwidth=0 marginheight=0>
+<table border=0 width=605 cellspacing=0 cellpadding=0>
+<tr><td colspan=2>
+<img src="slide_images/menu/top_title.jpg" width=600 height=33 border=0 alt="Introduction to Java Server Pages">
+</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;</td><td>
+
+
+<table border=0 width=605>
+<tr><td>
+
+<table border=0 cellspacing=0 cellpadding=0>
+<tr><td><a href="custom/frame_d00010.html" onMouseOver=highlight("0") onMouseOut=unhighlight("0")><img src="slide_images/menu/topbta00_n.gif" name="menu0" width=225 height=16 border=0 alt="Lecture Tips 3-5 minutes"></a></td></tr>
+<tr><td><a href="custom/frame_d01010.html" onMouseOver=highlight("1") onMouseOut=unhighlight("1")><img src="slide_images/menu/topbta01_n.gif" name="menu1" width=225 height=16 border=0 alt="Overview 15 minutes"></a></td></tr>
+<tr><td><a href="custom/frame_d02010.html" onMouseOver=highlight("2") onMouseOut=unhighlight("2")><img src="slide_images/menu/topbta02_n.gif" name="menu2" width=225 height=16 border=0 alt="Servlets 15 minutes"></a></td></tr>
+<tr><td><a href="custom/frame_d03010.html" onMouseOver=highlight("3") onMouseOut=unhighlight("3")><img src="slide_images/menu/topbta03_n.gif" name="menu3" width=225 height=16 border=0 alt="JavaBeans 15 minutes"></a></td></tr>
+<tr><td><a href="custom/frame_d04010.html" onMouseOver=highlight("4") onMouseOut=unhighlight("4")><img src="slide_images/menu/topbta04_n.gif" name="menu4" width=225 height=16 border=0 alt="Syntax 20 minutes"></a></td></tr>
+<tr><td><a href="custom/frame_d05010.html" onMouseOver=highlight("5") onMouseOut=unhighlight("5")><img src="slide_images/menu/topbta05_n.gif" name="menu5" width=225 height=24 border=0 alt="Lab Download"></a></td></tr>
+</table>
+</td>
+</td><td rowspan=2>
+<img src="images/beananim/bean0.gif" name="bean" width=252 height=214 border=0 alt="" usemap="#egg">
+
+</td></tr>
+<tr><td valign="bottom">
+<font face="Arial" size=-2>
+Java and all Java-based trademarks and logos are trademarks or registered trademarks of Sun Microsystems, Inc. in the United States and other countries.
+<br>
+</font>
+<font face="Arial" size=-1>
+<a href="http://www.ibm.com/java/education/">Return to Java/Education</a> - 
+<a href="help/help.html">Help</a> - 
+<a href="http://www.networking.ibm.com/java/javareg.nsf/java_education_jspfeedback?OpenForm">Comments</a> - 
+<a href="credits/credits.html">Site Credits</a>
+</font>
+</td></tr></table>
+
+</td></tr></table>
+
+<!-- FOOTER NAVIGATION -->
+<TABLE border=0 cellspacing=0 cellpadding=0 width=600>
+<TR><TD VALIGN="TOP">
+<nobr>
+<A HREF="http://www.ibm.com/"><IMG SRC="images/footer/footernav-h.gif" WIDTH="106" HEIGHT="17" BORDER="0" ALT="IBM Home Page"></A><A HREF="http://www.ibm.com/Shop/"><IMG SRC="images/footer/footernav-sh.gif" WIDTH="87" HEIGHT="17" BORDER="0" ALT="Shop"></A><A HREF="http://www.ibm.com/Contact/"><IMG SRC="images/footer/footernav-c.gif" WIDTH="126" HEIGHT="17" BORDER=0 ALT="Contact IBM"></A><A HREF="http://www.ibm.com/Search/"><IMG SRC="images/footer/footernav-s.gif" WIDTH="94" HEIGHT="17" BORDER=0 ALT="Search"></A><A HREF="http://www.ibm.com/Privacy/"><IMG SRC="images/footer/footernav-p.gif" WIDTH="99" HEIGHT="17" BORDER=0 ALT="Privacy"></A><A HREF="http://www.ibm.com/Legal/"><IMG SRC="images/footer/footernav-l.gif" WIDTH="88" HEIGHT="17" BORDER=0 ALT="Legal"></A>
+<nobr>
+</TD></TR>
+</TABLE>
+
+<map name="egg">
+  <area shape="rect" coords="79,165,169,198" href="html/egg.html">
+</map>
+
+</body>
+</html>

@@ -1,0 +1,28 @@
+<html>
+
+<script language="Javascript">
+<!-- Hide
+
+var framesetLoc = document.URL
+lastQuest = framesetLoc.lastIndexOf("?")
+
+if (lastQuest > 0) {
+	var startSlide = framesetLoc.substring(lastQuest+1)
+}
+
+
+document.writeln('<frameset cols="*,220" FRAMEBORDER="NO" BORDER="0" FRAMESPACING="0">')
+document.writeln('<frame src="../custom/slide_' + startSlide + '.html" scrolling="auto" name="slide" MARGINWIDTH="0" MARGINHEIGHT="0">')
+document.writeln('<frameset rows="45,16,*" FRAMEBORDER="NO" BORDER="0" FRAMESPACING="0">')
+document.writeln('<frame src="../custom/title_' + startSlide + '.html" scrolling="no" name="title" MARGINHEIGHT=0 MARGINWIDTH=0>')
+document.writeln('<frame src="scripttop.html" scrolling="no" name="scripttop" MARGINHEIGHT=0 MARGINWIDTH=0>')
+document.writeln('<frame src="../custom/text_' + startSlide + '.html" scrolling="auto" name="text" MARGINWIDTH="0" MARGINHEIGHT="0">')
+document.writeln('</frameset>')
+document.writeln('</frameset>')
+
+
+// Stop Hiding -->
+</script>
+</head>
+
+</html>

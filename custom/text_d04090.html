@@ -1,0 +1,12 @@
+<html><body bgcolor="#cccccc"><font face="Arial" size=-2>
+Continuing with bean attributes, when create is yes, the bean is created (via Beans.instantiate()) if not found in scope specified. If no is specified and the bean is not found, an error is returned.<br>
+<br>
+If the scope is request, the bean is to be retrieved from request context using the getAttribute() method.  This is default scope.  If the bean is created, it is stored in the current request context. This is used when the bean only needs to be available for the current http request.<br>
+<br>
+When session, the bean is retrieved from the current session using the getValue() method.  If the bean is created, it is stored in the current session.  This is used when the bean may be needed in multiple http requests.<br>
+<br>
+BeanName is the filename used to create a JavaBean from a serialized bean file.<br>
+<br>
+Click FORWARD to continue.<br>
+<br>
+</font></body></html>

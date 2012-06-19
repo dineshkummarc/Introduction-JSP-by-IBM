@@ -1,0 +1,192 @@
+<html>
+<head>
+
+<script language="Javascript">
+<!-- Hide
+
+browserName = navigator.appName;
+browserVer = parseInt(navigator.appVersion);
+
+if (browserName == "Netscape" && browserVer >= 3) {
+	version = "n3";
+}else{
+	version = "n2";
+}
+
+if (browserName == "Microsoft Internet Explorer" && browserVer >= 4) {
+	version = "n3";
+}
+
+if(version == "n3") {
+	menu1off = new Image();
+	menu1off.src = "../images/back_n.gif";
+	menu1hi = new Image();
+	menu1hi.src = "../images/back_h.gif";
+	menu2off = new Image();
+	menu2off.src = "../images/home_n.gif";
+	menu2hi = new Image();
+	menu2hi.src = "../images/home_h.gif";
+	menu3off = new Image();
+	menu3off.src = "../images/forward_n.gif";
+	menu3hi = new Image();
+	menu3hi.src = "../images/forward_h.gif";	
+	menu4off = new Image();
+	menu4off.src = "../images/lab_n.gif";
+	menu4hi = new Image();
+	menu4hi.src = "../images/lab_h.gif";
+	menu5off = new Image();
+	menu5off.src = "../images/index_n.gif";
+	menu5hi = new Image();
+	menu5hi.src = "../images/index_h.gif";
+}
+
+function highlight(imgName) {
+	if(version=="n3") {     
+		imgHi = eval(imgName + "hi.src");
+		document [imgName].src = imgHi;  
+	}
+}     
+       
+function unhighlight(imgName) {
+	if(version=="n3") {    
+		imgOff = eval(imgName + "off.src");
+		document [imgName].src = imgOff;   
+	}
+} 
+
+
+
+
+
+maxSlide = new Array(4);
+maxSlide[1] = 4;
+maxSlide[2] = 7;
+maxSlide[3] = 6;
+maxSlide[4] = 5;
+
+
+
+
+var goingToAltFrom = ""
+
+var temp = top.document.URL
+lastQuest = temp.lastIndexOf("?")
+var nowAt = temp.substring(lastQuest+1)
+
+function getCurModule() {
+	curModule = nowAt.substring(0, 1)
+	return(curModule)
+}
+
+
+function getCurTopic() { 
+	curTopic = nowAt.substring(1, 3)
+	return(curTopic)
+}
+
+function getCurSlide() {
+	curSlide = nowAt.substring(3)
+	return(curSlide)
+}
+
+
+function startingSlide(){
+	var framesetLoc = top.document.URL
+	lastQuest = framesetLoc.lastIndexOf("?")
+
+	if (lastQuest > 0) {
+		startSlide = framesetLoc.substring(lastQuest+1)
+		goToSlide(startSlide)
+	}
+}
+
+function goBack() {
+
+	if (goingToAltFrom == "") {
+		moveSlide(-1)
+	}else{
+		returnFromAlt(goingToAltFrom)
+	}
+}
+
+
+function moveSlide(where) {
+	//var nowAt = top.content.text.document.URL
+	//var nowAt = "somewhere/else/is/now/text_a0204.html"
+	
+	//lastDot = nowAt.lastIndexOf(".")
+	
+	//curModule = nowAt.substring((lastDot-5), (lastDot-4))
+	
+	///curTopic = nowAt.substring((lastDot-4), (lastDot-2))
+	
+	
+	noZeroCurTopic = parseInt(getCurTopic())
+	
+	newSlide = Number(getCurSlide()) + where
+	
+	//alert ("curModule=" + curModule + " curTopic=" + curTopic + " curSlide=" + curSlide)
+	
+	if ((newSlide > maxSlide[noZeroCurTopic]) || (newSlide < 1)){
+		backToMenu()		
+	}else{
+		if (newSlide < 10){
+			newSlide = "0" + newSlide
+		}
+		target = getCurModule() + getCurTopic() + newSlide
+		
+		nowAt = target
+		//alert("nowAt is now " + target)
+		goToSlide(target)
+	}
+}
+
+
+function goToSlide(where) {
+	top.content.document.location = "content_frameset.html?" + where
+	top.play.document.location = "../custom/play_" + where + ".html"
+}
+
+function returnFromAlt(where) {
+	goingToAltFrom = ""
+	top.content.document.location = "content_frameset.html?" + where
+}
+
+function goAlt(which) {
+
+	var nowAt = top.content.text.document.URL
+	//var nowAt = "somewhere/else/is/now/text_a0204.html"
+	lastDot = nowAt.lastIndexOf(".")
+	curTopic = nowAt.substring((lastDot-4), (lastDot-2))
+	curSlide = nowAt.substring((lastDot-2), lastDot)
+
+	goingToAltFrom = "a" + curTopic + curSlide
+
+	if (which == 'index'){
+		top.content.document.location = "../custom/index_a" + curTopic + ".html"
+	}else{
+		top.content.document.location = "../hard/lab_a" + curTopic + curSlide + ".html"
+	}
+}
+
+
+
+
+function backToMenu() {
+	top.window.close()
+	top.opener.focus()	
+}	
+
+// Stop Hiding -->
+</script>
+
+</head>
+<body bgcolor="#ffffff" onLoad="startingSlide()">
+<a href="javaScript:goBack()" onMouseOver=highlight("menu1") onMouseOut=unhighlight("menu1")><IMG src="../images/back_n.gif" alt="Back" border=0 name="menu1" width=40 height=40></a>
+<a href="javaScript:backToMenu()" onMouseOver=highlight("menu2") onMouseOut=unhighlight("menu2")><IMG src="../images/home_n.gif" alt="Home" border=0 name="menu2" width=40 height=40></a>
+<a href="javaScript:moveSlide(1)" onMouseOver=highlight("menu3") onMouseOut=unhighlight("menu3")><IMG src="../images/forward_n.gif" alt="Forward" border=0 name="menu3" width=40 height=40></a>
+<a href="javaScript:goAlt('lab')" onMouseOver=highlight("menu4") onMouseOut=unhighlight("menu4")><IMG src="../images/lab_n.gif" alt="Lab" border=0 name="menu4" width=40 height=40></a>
+<a href="javaScript:goAlt('index')" onMouseOver=highlight("menu5") onMouseOut=unhighlight("menu5")><IMG src="../images/index_n.gif" alt="Index" border=0 name="menu5" width=40 height=40></a>
+
+</body>
+</html>

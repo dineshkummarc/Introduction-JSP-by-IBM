@@ -1,0 +1,11 @@
+<html><body bgcolor="#cccccc"><font face="Arial" size=-2>
+In either Model 1 or Model 2, the JSP file is identified to the server by a .jsp extension. This tells the server that special handling is required. <br>
+<br>
+The first time a request is made for such a file, either directly from a client browser or from a servlet, the .jsp file is compiled into a servlet. For that reason, there is a slight delay on the first request for a .jsp page. <br>
+<br>
+The output from the servlet is standard HTML that the browser interprets and displays as usual.<br>
+<br>
+After compilation, the servlet is stored in memory on the server. On subsequent requests for that page, the server checks to see if the .jsp file has changed. If it has not changed, the server uses the servlet stored in memory to generate the response to the client. Because the compiled servlet is stored in memory, the response is very fast. If the .jsp file has changed, the server automatically recompiles the page file and replaces the servlet in memory.<br>
+<br>
+Click FORWARD to continue.<br>
+</font></body></html>

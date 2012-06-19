@@ -1,0 +1,72 @@
+<html>
+<head>
+
+<script language="Javascript">
+
+<!-- Hide
+
+browserName = navigator.appName;
+browserVer = parseInt(navigator.appVersion);
+
+if (browserName == "Netscape" && browserVer >= 3) {
+	version = "n3";
+}else{
+	version = "n2";
+}
+
+if (browserName == "Microsoft Internet Explorer" && browserVer >= 4) {
+	version = "n3";
+}
+
+if(version == "n3") {
+	menu1off = new Image();
+	menu1off.src = "../images/back_n.gif";
+	menu1hi = new Image();
+	menu1hi.src = "../images/back_h.gif";
+	menu2off = new Image();
+	menu2off.src = "../images/exit_n.gif";
+	menu2hi = new Image();
+	menu2hi.src = "../images/exit_h.gif";
+	menu3off = new Image();
+	menu3off.src = "../images/forward_n.gif";
+	menu3hi = new Image();
+	menu3hi.src = "../images/forward_h.gif";	
+	menu4off = new Image();
+	menu4off.src = "../images/more_n.gif";
+	menu4hi = new Image();
+	menu4hi.src = "../images/more_h.gif";
+	menu5off = new Image();
+	menu5off.src = "../images/index_n.gif";
+	menu5hi = new Image();
+	menu5hi.src = "../images/index_h.gif";
+	menu6off = new Image();
+	menu6off.src = "../images/feedback_n.gif";
+	menu6hi = new Image();
+	menu6hi.src = "../images/feedback_h.gif";
+}
+
+function highlight(imgName) {
+	if(version=="n3") {     
+		imgHi = eval(imgName + "hi.src");
+		document [imgName].src = imgHi;  
+	}
+}     
+       
+function unhighlight(imgName) {
+	if(version=="n3") {    
+		imgOff = eval(imgName + "off.src");
+		document [imgName].src = imgOff;   
+	}
+} 
+
+// Stop Hiding -->
+</script>
+
+
+</head>
+<body bgcolor="#000000" leftmargin=0 topmargin=0 marginwidth=0 marginheight=0>
+<table border=0 cellspacing=0 cellpadding=0 align="right">
+<tr><td colspan=6 bgcolor="#000000"><img src="../images/1x1.gif" width=1 height=4 border=0 alt=""></td></tr><tr><td colspan=6>
+<img src="../slide_images/topic_03.jpg" width=390 height=22 border=0 alt=""></td></tr><tr><td><a href="../custom/frame_d03010.html" onMouseOver=highlight("menu1") onMouseOut=unhighlight("menu1") target="_top"><IMG src="../images/back_n.gif" alt="Back" border=0 name="menu1" width=57 height=17></a></td><td><a href="frame_d03030.html" onMouseOver=highlight("menu3") onMouseOut=unhighlight("menu3") target="_top"><IMG src="../images/forward_n.gif" alt="Forward" border=0 name="menu3" width=78 height=17></a></td><td><a href="indexframe_d03020.html" onMouseOver=highlight("menu5") onMouseOut=unhighlight("menu5") target="_top"><IMG src="../images/index_n.gif" alt="Index" border=0 name="menu5" width=59 height=17></a></td><td><IMG src="../images/more_g.gif" alt="" border=0 name="menu4" width=57 height=17></td><td><a href="http://www.networking.ibm.com/java/javareg.nsf/java_education_jspfeedback?OpenForm" onMouseOver=highlight("menu6") onMouseOut=unhighlight("menu6") target="_top"><IMG src="../images/feedback_n.gif" alt="Feedback" border=0 name="menu6" width=90 height=17></a></td><td><a href="../index.html" onMouseOver=highlight("menu2") onMouseOut=unhighlight("menu2") target="_top"><IMG src="../images/exit_n.gif" alt="Exit" border=0 name="menu2" width=49 height=17></a></td></tr></table>
+</body>
+</html>

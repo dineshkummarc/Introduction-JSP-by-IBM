@@ -1,0 +1,444 @@
+<html>
+<head>
+<title>IBM Bamba for Java</title>
+</head>
+<body bgColor="FFFFFF">
+
+<h1>IBM Bamba for Java</h1>
+
+<p>
+The IBM Bamba for Java applet can be placed in an HTML page using 
+the following syntax.  All the attributes (code, codebase...) 
+immediately following the opening APPLET tag shown below in the figure 
+are needed.  Of the params use of either "src" or "liveport" is 
+mandatory and "cabbase" is needed, all others are optional and their 
+default values are explained below.
+<br>
+<br>
+<table border=2 cellspacing=4 cellpadding=4><tr><td>
+<pre>
+&lt;APPLET 
+  code     = "BambaPlayer.class"
+  codebase = "/JavaBamba"
+  archive  = "BambaPlayer.zip"
+  width    = 250
+  height   = 50  &gt;
+ &lt;param name="src"          value="sample.iba"&gt;
+ &lt;param name="liveport"     value="7001"&gt;
+ &lt;param name="cabbase"      value="BambaPlayer.cab"&gt;
+ &lt;param name="autostart"    value="false"&gt;
+ &lt;param name="showcontrols" value="true"&gt;
+ &lt;param name="bkcolor"      value="c0c0c0"&gt;
+ &lt;param name="border"       value="frame"&gt;
+ &lt;param name="colornw"      value="404040"&gt;
+ &lt;param name="colorse"      value="FFFFFF"&gt;
+ &lt;param name="endtoURL"     value="LoadThisPageWhenClipEnds.htm"&gt;
+ &lt;param name="endtoTarget"  value="PageLoadsToThisTarget"&gt;
+ &lt;param name="endtoPlay"    value="StartThisOneWhenClipEnds"&gt;
+&lt;/APPLET&gt;
+</pre>
+</table>
+<p>
+The following sections now describe in further detail the elements of the syntax
+
+<h2>Applet attribute values</h2>
+<p>
+These are the attributes of the applet tag interpreted by the browser 
+itself. 
+<ul>
+<h3>Code</h3>
+<p>
+Mandatory
+<p>
+This refers to the main IBM Bamba for Java player class.  It should not 
+be altered.  The same player code can handle either .iba audio clips or 
+.iba video/audio clips.  
+
+<h3>Codebase</h3>
+<p>
+Highly recommended
+<p>
+This refers to server location in which the IBM Bamba for Java player 
+code is installed.  In the above syntax it is assumed that the player is 
+installed in the JavaBamba subdirectory - directly off the root 
+directory on the server.  When the installation procedure was followed 
+the JavaBamba directory tree was created. If you placed the JavaBamba 
+inside another directory, e.g. in an applets subdirectory then modify the 
+codebase accordingly. The .. is permitted in the codebase e.g. 
+../applets/JavaBamba
+<p>
+The clients browser will re-use the code from the same codebase when 
+traversing pages. So after downloading the applet code, from the first 
+page encountered, having all the IBM for Java applets refer to the same 
+codebase will mean that the downloaded cached code will be used for all 
+subsequent pages coded that way. This makes for a much happier client 
+whose browser doesn't need to continually re-download the code.
+<p>
+Note that the codebase can be a fully qualified URL. This is useful for
+live streaming as it allows the applet to be served from the same place 
+as the live feed but keep the main HTML pages on a centralized web 
+server elsewhere.
+
+<h3>Archive</h3>
+<p>
+Highly recommended
+<p>
+Some browsers, Netscape Navigator 3.0 and above in particular, can 
+download the applet code when stored in a zip.  This means only one HTTP 
+Get versus several Gets for the individual classes. The ZIP contains the 
+same code and will be used instead of these individual class files for 
+those browsers that recognize it.  See also cabbase param for Microsoft 
+Internet Explorer.
+
+<h3>Width and height</h3>
+<p>
+Mandatory
+<p>
+This is the width and height of the space given to the applet by the 
+browser.  For audio only clips width=250 height=50 is a reasonable size 
+to choose that is enough space for the controls and status.  The 
+slide-bar will shrink/expand to fit the available width - provided it's 
+not too small of course.  
+<p>
+For video clips the space required by the video itself needs to be taken 
+into consideration.  The video will be positioned above the controls and 
+centered in the area.  It will always be displayed in its original size, 
+e.g. a 160x120 clip will need 160x120 for its display.  An additional 5 
+pixel border space is needed if a frame is used -see border param.  So 
+for 160x120 it needs 170x130 with the border.  Extra space surrounding 
+the video is drawn in the background param color.  So as an example, for a 
+video whose size is 176x144 (QCIF) a width=250 and height=240 gives 
+space for the controls plus a background colored region outside of the 
+video frame.  Some experiments with the sizes however will soon lead you 
+to the most visually pleasing aspect ratios for your clips.  
+
+<h3>Name</h3>
+<p>
+Required to identify the applet when you use the endtoPlay parameter and 
+want to have this applet started when another finishes.  
+
+<h3>Align, Alt, HSpace, VSpace etc</h3>
+<p>
+Other attributes of the applet tag may be specified as required. Refer 
+to an HTML reference for the meaning of these and any others which are 
+supported.
+</ul>
+
+<h2>Applet param values</h2>
+<p>
+These are elements of the applet tag interpreted by the applet code - 
+with the exception of the cabbase param for Microsoft Internet Explorer.
+<ul>
+<h3>src</h3>
+<p>
+Mandatory for stored clips (see also liveport param below)
+<p>
+This is the URL for the .iba clip. It is either a full URL e.g. 
+http://videos/animals/groundhog.iba or URL relative to the DOCBASE for 
+the HTML pages. You may like to keep the clips together or place them in 
+the directory with the html page. 
+
+<h3>liveport</h3>
+<p>
+Mandatory for live streaming (see also src param above)
+<p>
+This is the port on the server that is providing the live feed. You 
+should not use this together with the src param since the player will 
+work either as a live streaming player or to play stored clips.
+<p>
+Please note, unlike the Bamba plug-in, no IP address can be provided for 
+the live stream. The live feed MUST be from the same server that 
+provides this applet. The Java security model prevents an applet from 
+accessing another server unless the applet is signed using a certificate 
+- the Bamba For Java applet is not signed and MUST abide by the 
+security rules imposed by the browsers and Java VM.
+<p>
+Note however that the IP address is derived from the codebase and the 
+applet (and live feed) can therefore be on a different machine than the 
+HTML page is served from (within which the applet tag is authored).
+
+<h3>cabbase</h3>
+<p>
+Highly recommended
+<p>
+Like the archive value cabbase refers to a file in which all the 
+class files are store. In the case of the CAB (CABinet) file this is 
+used by Microsoft Internet Explorer. For further information see the 
+Archive tag above.
+
+<h3>autostart</h3>
+<p>
+Optional - defaults to "false".
+<p>
+May be set to "false" or "true". This parameter determines whether the 
+clip will start playing automatically or wait for the user to press the 
+play button. 
+<p>
+Note: for versions of Bamba For Java prior to 0.98, that did not support 
+the endtoPlay param, if showcontrols was set to false then autostart was 
+always treated as though it was set true - otherwise the user would have 
+had no other way of starting the clip.  Since clips can now start one 
+another, using the endtoPlay, autostart is no longer forced true.  
+
+<h3>showcontrols</h3>
+<p>
+Optional - defaults to "true".
+<p>
+May be set to "false" or "true". When set "true" (default) controls for 
+pause, play, rewind, seek etc are displayed along with status 
+information. For video we have allowed the controls to be disabled in 
+order that the applet can be placed seamlessly inside other graphics etc 
+for specialized visual effects. The clip will start playing 
+automatically, see autostart above, if controls are disabled.
+
+<h3>bkcolor</h3> 
+<p>
+Optional - defaults to <i>light gray.</i>
+<p>
+Changes the background color for the applet. The value should be a 6 
+digit hex code for the colors in the form RRGGBB. By default the color 
+is light gray i.e. a value "c0c0c0"
+
+<h3>border</h3>  
+<p>
+Optional - defaults to "frame".
+<p>
+For a video clip this allows the author to choose whether or not there 
+is any border surrounding the video clip. 
+<ul>
+<li>
+A value of "none" disables 
+any border. 
+<li>
+The value "frame" (default) draws a 5 pixel border around 
+the video whose top (north) and left (west) edges are drawn in the 
+<b>colornw</b> color and bottom (south) and right (east) edges are drawn 
+in the <b>colorse</b> color.  By default these colors give a sunken 
+frame effect. By reversing the colors, i.e. lighter on the nw and darker 
+on the se a raised button effect is achieved. With both colors the same 
+a flat border effect is gained.
+<li>
+The value "shadow" draws a 5 pixel shadow in the <b>colorse</b> 
+color both below and to the right of the video.
+</ul>
+
+<h3>colornw</h3> 
+<p>
+Optional - defaults to <i>dark gray.</i>
+<p>
+Color for video nw <b>border</b> in RRGGBB form. See border param above.
+
+<h3>colorse</h3> 
+<p>
+Optional - defaults to <i>white.</i>
+<p>
+Color for video nw <b>border</b> in RRGGBB form. See border param above.
+
+<h3>endtoURL</h3> 
+<p>
+Optional
+<p>
+This optional parameter specifies an HTML page which will be loaded into 
+the browser when the clip reaches the end and finishes playing.  
+Typically the new page would include another Bamba For Java clip which 
+would load the next page and so on.  This permits the creation of say an 
+online presentation where each page is automatically flipped to the 
+next page when the accompanying audio (or video) clip is complete.
+<p>
+By making the last page reload the first page it would be possible to 
+create a carousel effect where a set of pages are continually played over 
+and over in the same sequence.
+
+<h3>endtoTarget</h3> 
+<p>
+Optional
+<p>
+To be used in conjunction with endtoURL.  This parameter can be used as 
+an option, in addition to endtoURL, to specify the name of the target 
+frame or window into which the page should be loaded.  If omitted the 
+default browser target is used.  This is identical to specifying a link 
+in HTML where a page can be specified (href=) and a target named too; 
+for further information on targets consult an HTML reference under the 
+&lt;a&gt; tag that is used to create links.
+
+<h3>endtoPlay</h3> 
+<p>
+Optional
+<p>
+This optional parameter specifies another Bamba For Java applet (clip) 
+that should be started when this applet (clip) reaches the end and 
+finishes playing.  The parameter specifies the applet by name and 
+requires that the name attribute be used on the APPLET tag e.g.  
+name="ClipOne".
+<p>
+An applet can only be started if it is in the Ready state - this is the 
+state that the applet enters after it is loaded before it plays.  Once 
+playing has started the applet will never re-enter the Ready state and 
+hence this parameter can be used to sequence through the clips on a page 
+once only.  Access to be able to start another applet (clip) falls into 
+the area of inter-applet communication - which varies by browser - its 
+best to keep to applets within the same page and not use frames if you 
+want the best chance of working in the most environments.  
+<p>
+One of the applets on the page would most likely be authored with 
+autostart set to true so that it started when the page was loaded and 
+became the first applet to play in the sequence and would trigger the 
+next to start when it ended.  
+
+</ul>
+
+<h2>Examples</h2>
+<ul>
+<li>
+A video clip with controls that the user must click on the play button 
+to start. It will be presented on a light-gray background (defaulted) 
+with a frame border around the video (defaulted).
+<p>
+<pre>
+&lt;APPLET
+  code     = "BambaPlayer.class"
+  codebase = "/Applets/JavaBamba"
+  archive  = "BambaPlayer.zip"
+  width    = 250
+  height   = 240  &gt;
+ &lt;param name="src"          value="videosample.iba"&gt;
+ &lt;param name="cabbase"      value="BambaPlayer.cab"&gt;
+&lt;/APPLET&gt;
+</pre>
+
+<li>
+A video clip with NO controls that starts playing automatically.
+It will be presented on a pure red background with the effect of a 
+raised frame around the video making it look like a large button.
+<p>
+<pre>
+&lt;APPLET
+  code     = "BambaPlayer.class"
+  codebase = "/Applets/JavaBamba"
+  archive  = "BambaPlayer.zip"
+  width    = 250
+  height   = 200  &gt;
+ &lt;param name="src"          value="videosample.iba"&gt;
+ &lt;param name="cabbase"      value="BambaPlayer.cab"&gt;
+ &lt;param name="autostart"    value="true"&gt;
+ &lt;param name="showcontrols" value="false"&gt;
+ &lt;param name="bkcolor"      value="FF0000"&gt;
+ &lt;param name="border"       value="frame"&gt;
+ &lt;param name="colornw"      value="F0F0F0"&gt;
+ &lt;param name="colorse"      value="202020"&gt;
+&lt;/APPLET&gt;
+</pre>
+
+<li>
+An audio clip with controls that the user must click on the play button 
+to start. It will be presented on a pure green background.
+<p>
+<pre>
+&lt;APPLET
+  code     = "BambaPlayer.class"
+  codebase = "/Applets/JavaBamba"
+  archive  = "BambaPlayer.zip"
+  width    = 250
+  height   =  50  &gt;
+ &lt;param name="src"          value="audiosample.iba"&gt;
+ &lt;param name="cabbase"      value="BambaPlayer.cab"&gt;
+ &lt;param name="bkcolor"      value="00FF00"&gt;
+&lt;/APPLET&gt;
+</pre>
+
+
+<li>
+An live audio feed example (red background this time).
+<p>
+<pre>
+&lt;APPLET
+  code     = "BambaPlayer.class"
+  codebase = "/Applets/JavaBamba"
+  archive  = "BambaPlayer.zip"
+  width    = 250
+  height   =  50  &gt;
+ &lt;param name="liveport"     value="7001"&gt;
+ &lt;param name="cabbase"      value="BambaPlayer.cab"&gt;
+ &lt;param name="bkcolor"      value="FF0000"&gt;
+&lt;/APPLET&gt;
+</pre>
+
+<li>
+A live audio feed but from another machine  
+<p>
+<pre>
+&lt;APPLET
+  code     = "BambaPlayer.class"
+  codebase = "http://myliveserver.somewhere-else.com/Applets/JavaBamba"
+  archive  = "BambaPlayer.zip"
+  width    = 250
+  height   =  50  &gt;
+ &lt;param name="liveport"     value="7001"&gt;
+ &lt;param name="cabbase"      value="BambaPlayer.cab"&gt;
+ &lt;param name="bkcolor"      value="FF0000"&gt;
+&lt;/APPLET&gt;
+</pre>
+
+<li>
+An audio clip that autostarts, with controls, and that loads another 
+page into the browser when it ends.
+<p>
+<pre>
+&lt;APPLET
+  code     = "BambaPlayer.class"
+  codebase = "/Applets/JavaBamba"
+  archive  = "BambaPlayer.zip"
+  width    = 250
+  height   =  50  &gt;
+ &lt;param name="src"          value="audiopage1.iba"&gt;
+ &lt;param name="cabbase"      value="BambaPlayer.cab"&gt;
+ &lt;param name="autostart"    value="true"&gt;
+ &lt;param name="endtoURL"     value="presentation_page2.html"&gt;
+&lt;/APPLET&gt;
+</pre>
+
+
+<li>
+Two Bamba clips on a page.  The first clip autostarts and when it 
+finishes it starts the second clip.  Note that I have chosen to name 
+both applets although arguably only the second applet name is actually 
+required.  (If I had chosen to do so I could have used the endtoURL on 
+the second clip to load up a new page once that had ended).  
+
+<p>
+<pre>
+&lt;body&gt;
+&lt;html&gt;
+
+  &lt;APPLET
+    code     = "BambaPlayer.class"
+    codebase = "/Applets/JavaBamba"
+    archive  = "BambaPlayer.zip"
+    name     = "FirstClip"
+    width    = 250
+    height   =  50  &gt;
+   &lt;param name="src"          value="bambaclip1.iba"&gt;
+   &lt;param name="cabbase"      value="BambaPlayer.cab"&gt;
+   &lt;param name="autostart"    value="true"&gt;
+   &lt;param name="endtoPlay"    value="SecondClip"&gt;
+  &lt;/APPLET&gt;
+
+  &lt;APPLET
+    code     = "BambaPlayer.class"
+    codebase = "/Applets/JavaBamba"
+    archive  = "BambaPlayer.zip"
+    name     = "SecondClip"
+    width    = 250
+    height   =  50  &gt;
+   &lt;param name="src"          value="bambaclip2.iba"&gt;
+   &lt;param name="cabbase"      value="BambaPlayer.cab"&gt;
+  &lt;/APPLET&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+
+</ul>
+
+</body>
+</html>
